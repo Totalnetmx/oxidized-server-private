@@ -1,0 +1,24 @@
+version: '3'
+services:
+  oxidized:
+    image: oxidized/oxidized:latest
+    container_name: oxidized
+    restart: unless-stopped
+    ports:
+      - "8888:8888"
+    volumes:
+      # Config (directorio con tu config.yaml)
+      - /opt/obs/oxidized/config:/home/oxidized/.config/oxidized
+      # router.db en el host -> archivo dentro del contenedor
+      - /opt/obs/oxidized/router.db:/home/oxidized/router.db
+      # (opcional) carpeta local para otras configs que quieras persistir
+      - /opt/obs/oxidized/configs:/home/oxidized/configs
+      # logs persistentes
+      - /opt/obs/oxidized/logs:/home/oxidized/logs
+      # repos (backups) -> “backup-equipos”
+      - /opt/obs/oxidized/backup-equipos:/home/oxidized/repos
+    environment:
+      - USER=oxidized
+      - HOME=/home/oxidized
+      # 🔹 Arreglo opcional: indicarle a Oxidized qué config usar
+      - OXIDIZED_CONFIG=/home/oxidized/.config/oxidized/config.yaml
