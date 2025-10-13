@@ -1,0 +1,9 @@
+# runtime/efímeros
+pid
+config/pid
+config/crash/
+logs/
+
+# editor / OS
+*.swp
+.DS_Store
