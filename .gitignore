@@ -1,0 +1,17 @@
+# Ignora todo por defecto
+*
+!.gitignore
+
+# Permitir sólo la configuración del servidor
+!docker-compose.yaml
+!router.db
+!config/
+!config/**
+
+# Nunca versionar runtime
+logs/
+crash/
+backup-equipos/
+pid
+*.swp
+.DS_Store
