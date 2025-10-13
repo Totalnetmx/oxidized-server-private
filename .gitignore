@@ -1,9 +1,17 @@
-# runtime/efímeros
-pid
-config/pid
-config/crash/
-logs/
+# Ignora todo por defecto
+*
+!.gitignore
 
-# editor / OS
+# Permitir sólo la configuración del servidor
+!docker-compose.yaml
+!router.db
+!config/
+!config/**
+
+# Por si aparecen, nunca versionar runtime
+logs/
+crash/
+backup-equipos/
+pid
 *.swp
 .DS_Store
