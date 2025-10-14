@@ -4,23 +4,28 @@ password: oxidized2025
 
 model_map:
   mikrotik: routeros
+  mikrotik-v7: routeros
   arista: eos
   cisco: ios
 
 interval: 3600
 use_syslog: false
 log: /home/oxidized/logs/oxidized.log
-debug: true         # deja true para ver más claro el log en esta prueba
+debug: true            # déjalo true por ahora para ver claro el log
 threads: 30
 timeout: 20
 retries: 2
 rest: 0.0.0.0:8888
+# prompt genérico que funciona bien con EOS
+prompt: !ruby/regexp /^\r?[\w.@-]+(?:\([^)]+\))?[#>]\s?$/
 
 input:
   default: ssh
   debug: false
   ssh:
     secure: false
+    # Clave para EOS: permitir keyboard-interactive además de password
+    auth_methods: ["password","keyboard-interactive"]
 
 output:
   default: file
